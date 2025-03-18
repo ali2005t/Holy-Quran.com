@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-translate="prayerTimes">مواقيت الصلاة</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#4CAF50">
+    <link rel="apple-touch-icon" href="images/app-icon.png">
+</head>
+<body>
+    <button class="toggle-sidebar"><i class="fas fa-bars"></i></button>
+    
+    <div class="sidebar">
+        <div class="sidebar-menu">
+            <a href="index.html">
+                <img src="images/app-icon.png" alt="الرئيسية">
+                <span data-translate="home">الرئيسية</span>
+            </a>
+            <a href="reciters.html">
+                <img src="images/micrfone.png" alt="القراء">
+                <span data-translate="reciters">القراء</span>
+            </a>
+            <a href="prayer-times.html" class="active">
+                <img src="images/مواقيت الصلاة.png" alt="مواقيت الصلاة">
+                <span data-translate="prayerTimes">مواقيت الصلاة</span>
+            </a>
+            <a href="tasbih.html">
+                <img src="images/سبحة.png" alt="السبحة الإلكترونية">
+                <span data-translate="tasbih">السبحة الإلكترونية</span>
+            </a>
+            <a href="quran.html">
+                <img src="images/المصحف الشريف.png" alt="المصحف الشريف">
+                <span data-translate="quran">المصحف الشريف</span>
+            </a>
+            <a href="azkar.html">
+                <i class="fas fa-book-open"></i>
+                <span data-translate="azkar">الأذكار</span>
+            </a>
+            <a href="settings.html">
+                <i class="fas fa-gear"></i>
+                <span data-translate="settings">الإعدادات</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="prayer-times-container">
+            <header>
+                <h1 data-translate="prayerTimesTitle">مواقيت الصلاة</h1>
+                <div class="location-info">
+                    <h2 id="city-name">...</h2>
+                    <p id="date"></p>
+                </div>
+                <button id="get-location" class="location-btn">
+                    <i class="fas fa-location-dot"></i>
+                    <span data-translate="getLocation">تحديد موقعي</span>
+                </button>
+            </header>
+
+            <div class="next-prayer">
+                <h3 data-translate="nextPrayer">الصلاة القادمة</h3>
+                <div class="next-prayer-info">
+                    <span id="next-prayer-name"></span>
+                    <span id="next-prayer-time"></span>
+                </div>
+                <p id="time-remaining"></p>
+            </div>
+
+            <div class="prayer-times-grid">
+                <!-- وقت صلاة الفجر -->
+                <div class="prayer-time-card">
+                    <div class="prayer-icon">
+                        <i class="fas fa-sun"></i>
+                    </div>
+                    <div class="prayer-info">
+                        <span class="prayer-name" data-translate="fajr">الفجر</span>
+                        <span id="fajr-time" class="prayer-time">--:--</span>
+                    </div>
+                </div>
+
+                <!-- وقت الشروق -->
+                <div class="prayer-time-card">
+                    <div class="prayer-icon">
+                        <i class="fas fa-sunrise"></i>
+                    </div>
+                    <div class="prayer-info">
+                        <span class="prayer-name" data-translate="sunrise">الشروق</span>
+                        <span id="sunrise-time" class="prayer-time">--:--</span>
+                    </div>
+                </div>
+
+                <!-- وقت صلاة الظهر -->
+                <div class="prayer-time-card">
+                    <div class="prayer-icon">
+                        <i class="fas fa-sun"></i>
+                    </div>
+                    <div class="prayer-info">
+                        <span class="prayer-name" data-translate="dhuhr">الظهر</span>
+                        <span id="dhuhr-time" class="prayer-time">--:--</span>
+                    </div>
+                </div>
+
+                <!-- وقت صلاة العصر -->
+                <div class="prayer-time-card">
+                    <div class="prayer-icon">
+                        <i class="fas fa-sun"></i>
+                    </div>
+                    <div class="prayer-info">
+                        <span class="prayer-name" data-translate="asr">العصر</span>
+                        <span id="asr-time" class="prayer-time">--:--</span>
+                    </div>
+                </div>
+
+                <!-- وقت صلاة المغرب -->
+                <div class="prayer-time-card">
+                    <div class="prayer-icon">
+                        <i class="fas fa-sunset"></i>
+                    </div>
+                    <div class="prayer-info">
+                        <span class="prayer-name" data-translate="maghrib">المغرب</span>
+                        <span id="maghrib-time" class="prayer-time">--:--</span>
+                    </div>
+                </div>
+
+                <!-- وقت صلاة العشاء -->
+                <div class="prayer-time-card">
+                    <div class="prayer-icon">
+                        <i class="fas fa-moon"></i>
+                    </div>
+                    <div class="prayer-info">
+                        <span class="prayer-name" data-translate="isha">العشاء</span>
+                        <span id="isha-time" class="prayer-time">--:--</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="translations.js"></script>
+    <script src="prayer-times.js"></script>
+    <script src="darkMode.js"></script>
+    <script>
+        const toggleBtn = document.querySelector('.toggle-sidebar');
+        const sidebar = document.querySelector('.sidebar');
+        
+        toggleBtn.addEventListener('click', () => {
+            sidebar.classList.toggle('active');
+        });
+
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js')
+                    .then(registration => {
+                        console.log('ServiceWorker registration successful');
+                    })
+                    .catch(err => {
+                        console.log('ServiceWorker registration failed: ', err);
+                    });
+            });
+        }
+
+        // تحديث الترجمات
+        function updateTranslations() {
+            const lang = localStorage.getItem('language') || 'ar';
+            const elements = document.querySelectorAll('[data-translate]');
+            
+            elements.forEach(element => {
+                const key = element.getAttribute('data-translate');
+                if (translations[lang] && translations[lang][key]) {
+                    if (element.tagName.toLowerCase() === 'input' && element.hasAttribute('placeholder')) {
+                        element.placeholder = translations[lang][key];
+                    } else {
+                        element.textContent = translations[lang][key];
+                    }
+                }
+            });
+
+            // تحديث اتجاه الصفحة
+            document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+            document.documentElement.lang = lang;
+        }
+
+        // تحديث الترجمات عند تحميل الصفحة
+        document.addEventListener('DOMContentLoaded', updateTranslations);
+    </script>
+</body>
+</html>

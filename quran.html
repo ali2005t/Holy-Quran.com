@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>المصحف الشريف</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <button class="toggle-sidebar"><i class="fas fa-bars"></i></button>
+    
+    <div class="sidebar">
+        <div class="sidebar-menu">
+            <a href="index.html">
+                <img src="images/app-icon.png" alt="الرئيسية">
+                <span data-translate="home">الرئيسية</span>
+            </a>
+            <a href="reciters.html">
+                <img src="images/micrfone.png" alt="القراء">
+                <span data-translate="reciters">القراء</span>
+            </a>
+            <a href="prayer-times.html">
+                <img src="images/مواقيت الصلاة.png" alt="مواقيت الصلاة">
+                <span data-translate="prayerTimes">مواقيت الصلاة</span>
+            </a>
+            <a href="tasbih.html">
+                <img src="images/سبحة.png" alt="السبحة الإلكترونية">
+                <span data-translate="tasbih">السبحة الإلكترونية</span>
+            </a>
+            <a href="quran.html" class="active">
+                <img src="images/المصحف الشريف.png" alt="المصحف الشريف">
+                <span data-translate="quran">المصحف الشريف</span>
+            </a>
+            <a href="azkar.html">
+                <i class="fas fa-book-open"></i>
+                <span data-translate="azkar">الأذكار</span>
+            </a>
+            <a href="settings.html">
+                <i class="fas fa-gear"></i>
+                <span data-translate="settings">الإعدادات</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="quran-container">
+            <div class="quran-header">
+                <h1>المصحف الشريف</h1>
+                <div class="search-box">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" id="surah-search" placeholder="ابحث عن السورة..." data-translate="searchSurah">
+                </div>
+            </div>
+
+            <div class="surahs-grid">
+                <!-- سيتم إضافة السور هنا -->
+            </div>
+        </div>
+    </div>
+
+    <script src="translations.js"></script>
+    <script src="quran.js"></script>
+</body>
+</html>

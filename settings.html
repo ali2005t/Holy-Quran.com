@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-translate="settings">الإعدادات</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#4CAF50">
+    <link rel="apple-touch-icon" href="images/app-icon.png">
+</head>
+<body>
+    <button class="toggle-sidebar"><i class="fas fa-bars"></i></button>
+    
+    <div class="sidebar">
+        <div class="sidebar-menu">
+            <a href="index.html">
+                <img src="images/app-icon.png" alt="الرئيسية">
+                <span data-translate="home">الرئيسية</span>
+            </a>
+            <a href="reciters.html">
+                <img src="images/micrfone.png" alt="القراء">
+                <span data-translate="reciters">القراء</span>
+            </a>
+            <a href="prayer-times.html">
+                <img src="images/مواقيت الصلاة.png" alt="مواقيت الصلاة">
+                <span data-translate="prayerTimes">مواقيت الصلاة</span>
+            </a>
+            <a href="tasbih.html">
+                <img src="images/سبحة.png" alt="السبحة الإلكترونية">
+                <span data-translate="tasbih">السبحة الإلكترونية</span>
+            </a>
+            <a href="quran.html">
+                <img src="images/المصحف الشريف.png" alt="المصحف الشريف">
+                <span data-translate="quran">المصحف الشريف</span>
+            </a>
+            <a href="azkar.html">
+                <i class="fas fa-book-open"></i>
+                <span data-translate="azkar">الأذكار</span>
+            </a>
+            <a href="settings.html" class="active">
+                <i class="fas fa-gear"></i>
+                <span data-translate="settings">الإعدادات</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="settings-container">
+            <header>
+                <h1 data-translate="settings">الإعدادات</h1>
+            </header>
+
+            <div class="settings-section">
+                <h2 data-translate="language">اللغة</h2>
+                <div class="setting-item">
+                    <div class="setting-info">
+                        <i class="fas fa-language"></i>
+                        <span data-translate="language">اللغة</span>
+                    </div>
+                    <select id="language-select" class="language-select">
+                        <option value="ar">العربية</option>
+                        <option value="en">English</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="settings-section">
+                <h2 data-translate="appInfo">معلومات التطبيق</h2>
+                <div class="setting-item">
+                    <div class="setting-info">
+                        <i class="fas fa-info-circle"></i>
+                        <span data-translate="appVersion">إصدار التطبيق</span>
+                    </div>
+                    <span>1.0.0</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="translations.js"></script>
+    <script src="settings.js"></script>
+</body>
+</html>

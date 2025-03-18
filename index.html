@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>القرآن الكريم</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#4CAF50">
+    <link rel="apple-touch-icon" href="images/app-icon.png">
+</head>
+<body class="home-page">
+    <div class="particles-container"></div>
+    <div class="container">
+        <div class="sidebar">
+            <div class="sidebar-menu">
+                <a href="index.html" class="active">
+                    <img src="images/app-icon.png" alt="الرئيسية">
+                    <span data-translate="home">الرئيسية</span>
+                </a>
+                <a href="reciters.html">
+                    <img src="images/micrfone.png" alt="القراء">
+                    <span data-translate="reciters">القراء</span>
+                </a>
+                <a href="prayer-times.html">
+                    <img src="images/مواقيت الصلاة.png" alt="مواقيت الصلاة">
+                    <span data-translate="prayerTimes">مواقيت الصلاة</span>
+                </a>
+                <a href="qibla.html">
+                    <i class="fas fa-compass"></i>
+                    <span data-translate="qibla">القبلة</span>
+                </a>
+                <a href="tasbih.html">
+                    <img src="images/سبحة.png" alt="السبحة الإلكترونية">
+                    <span data-translate="tasbih">السبحة الإلكترونية</span>
+                </a>
+                <a href="quran.html">
+                    <img src="images/المصحف الشريف.png" alt="المصحف الشريف">
+                    <span data-translate="quran">المصحف الشريف</span>
+                </a>
+                <a href="azkar.html">
+                    <i class="fas fa-book-open"></i>
+                    <span data-translate="azkar">الأذكار</span>
+                </a>
+                <a href="settings.html">
+                    <i class="fas fa-gear"></i>
+                    <span data-translate="settings">الإعدادات</span>
+                </a>
+            </div>
+        </div>
+        <div class="home-content">
+            <div class="app-logo animate-fade-in">
+                <div class="logo-wrapper">
+                    <img src="images/app-icon.png" alt="القرآن الكريم">
+                    <div class="logo-glow"></div>
+                </div>
+            </div>
+            <h1 class="app-title animate-slide-up">القرآن الكريم</h1>
+            <p class="app-description animate-fade-in">
+                <i class="fas fa-quote-right"></i>
+                ورَتِّلِ الْقُرْآنَ تَرْتِيلًا
+                <i class="fas fa-quote-left"></i>
+            </p>
+            <div class="features-grid animate-fade-in">
+                <div class="feature-item">
+                    <img src="images/micrfone.png" alt="القراء" style="width: 24px; height: 24px;">
+                    <span>نخبة من القراء</span>
+                </div>
+                <div class="feature-item">
+                    <img src="images/المصحف الشريف.png" alt="المصحف الشريف" style="width: 24px; height: 24px;">
+                    <span>المصحف الشريف</span>
+                </div>
+                <div class="feature-item">
+                    <img src="images/سبحة.png" alt="السبحة الإلكترونية" style="width: 24px; height: 24px;">
+                    <span>سبحة إلكترونية</span>
+                </div>
+                <div class="feature-item">
+                    <img src="images/مواقيت الصلاة.png" alt="مواقيت الصلاة" style="width: 24px; height: 24px;">
+                    <span>مواقيت الصلاة</span>
+                </div>
+            </div>
+            
+            <a href="reciters.html" class="cta-button animate-bounce">
+                <i class="fas fa-play"></i>
+                <span>ابدأ الاستماع</span>
+            </a>
+            
+            <div class="app-footer animate-fade-in">
+                <p>جميع الحقوق محفوظة &copy; 2024</p>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        // تهيئة خلفية الجزيئات
+        particlesJS('particles-container', {
+            particles: {
+                number: { value: 80, density: { enable: true, value_area: 800 } },
+                color: { value: '#ffffff' },
+                shape: { type: 'circle' },
+                opacity: { value: 0.5, random: false },
+                size: { value: 3, random: true },
+                line_linked: { enable: true, distance: 150, color: '#ffffff', opacity: 0.4, width: 1 },
+                move: { enable: true, speed: 2, direction: 'none', random: false, straight: false, out_mode: 'out' }
+            },
+            interactivity: {
+                detect_on: 'canvas',
+                events: {
+                    onhover: { enable: true, mode: 'repulse' },
+                    onclick: { enable: true, mode: 'push' },
+                    resize: true
+                }
+            },
+            retina_detect: true
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-translate="tasbih">السبحة الإلكترونية</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#4CAF50">
+    <link rel="apple-touch-icon" href="images/app-icon.png">
+</head>
+<body>
+    <button class="toggle-sidebar"><i class="fas fa-bars"></i></button>
+    
+    <div class="sidebar">
+        <div class="sidebar-menu">
+            <a href="index.html">
+                <img src="images/app-icon.png" alt="الرئيسية">
+                <span data-translate="home">الرئيسية</span>
+            </a>
+            <a href="reciters.html">
+                <img src="images/micrfone.png" alt="القراء">
+                <span data-translate="reciters">القراء</span>
+            </a>
+            <a href="prayer-times.html">
+                <img src="images/مواقيت الصلاة.png" alt="مواقيت الصلاة">
+                <span data-translate="prayerTimes">مواقيت الصلاة</span>
+            </a>
+            <a href="tasbih.html" class="active">
+                <img src="images/سبحة.png" alt="السبحة الإلكترونية">
+                <span data-translate="tasbih">السبحة الإلكترونية</span>
+            </a>
+            <a href="quran.html">
+                <img src="images/المصحف الشريف.png" alt="المصحف الشريف">
+                <span data-translate="quran">المصحف الشريف</span>
+            </a>
+            <a href="azkar.html">
+                <i class="fas fa-book-open"></i>
+                <span data-translate="azkar">الأذكار</span>
+            </a>
+            <a href="settings.html">
+                <i class="fas fa-gear"></i>
+                <span data-translate="settings">الإعدادات</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="tasbih-container">
+            <header>
+                <h1 data-translate="dhikrCounter">السبحة الإلكترونية</h1>
+            </header>
+
+            <div class="tasbih-circle">
+                <div class="beads-circle">
+                    <div class="bead"><div class="bead-inner"></div></div>
+                    <div class="bead"><div class="bead-inner"></div></div>
+                    <div class="bead"><div class="bead-inner"></div></div>
+                    <div class="bead"><div class="bead-inner"></div></div>
+                    <div class="bead"><div class="bead-inner"></div></div>
+                    <div class="bead"><div class="bead-inner"></div></div>
+                    <div class="bead"><div class="bead-inner"></div></div>
+                    <div class="bead"><div class="bead-inner"></div></div>
+                </div>
+                <div class="counter-display">
+                    <div class="counter" id="counter">0</div>
+                </div>
+            </div>
+
+            <button id="count-btn" class="count-button">
+                <i class="fas fa-hand-pointer"></i>
+            </button>
+
+            <div class="dhikr-selector">
+                <button class="dhikr-btn active" data-dhikr="سبحان الله">
+                    <span class="dhikr-text">سبحان الله</span>
+                </button>
+                <button class="dhikr-btn" data-dhikr="الحمد لله">
+                    <span class="dhikr-text">الحمد لله</span>
+                </button>
+                <button class="dhikr-btn" data-dhikr="لا إله إلا الله">
+                    <span class="dhikr-text">لا إله إلا الله</span>
+                </button>
+                <button class="dhikr-btn" data-dhikr="الله أكبر">
+                    <span class="dhikr-text">الله أكبر</span>
+                </button>
+            </div>
+
+            <button id="reset-btn" class="reset-button" data-translate="reset">
+                <i class="fas fa-redo"></i>
+                إعادة تعيين
+            </button>
+        </div>
+    </div>
+
+    <script src="translations.js"></script>
+    <script src="tasbih.js"></script>
+    <script>
+        // تهيئة القائمة الجانبية
+        const toggleBtn = document.querySelector('.toggle-sidebar');
+        const sidebar = document.querySelector('.sidebar');
+        
+        toggleBtn.addEventListener('click', () => {
+            sidebar.classList.toggle('active');
+        });
+
+        // إغلاق القائمة عند النقر خارجها
+        document.addEventListener('click', function(event) {
+            if (!sidebar.contains(event.target) && !toggleBtn.contains(event.target) && sidebar.classList.contains('active')) {
+                sidebar.classList.remove('active');
+            }
+        });
+
+        // تحديث الترجمات
+        function updateTranslations() {
+            const lang = localStorage.getItem('language') || 'ar';
+            const elements = document.querySelectorAll('[data-translate]');
+            
+            elements.forEach(element => {
+                const key = element.getAttribute('data-translate');
+                if (translations[lang] && translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+        }
+
+        // تحديث الترجمات عند تحميل الصفحة
+        document.addEventListener('DOMContentLoaded', updateTranslations);
+    </script>
+</body>
+</html>

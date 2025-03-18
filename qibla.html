@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-translate="qiblaTitle">اتجاه القبلة</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#4CAF50">
+    <link rel="apple-touch-icon" href="images/app-icon.png">
+    <style>
+        .compass-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .compass {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            position: relative;
+            background: white;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            margin: 20px 0;
+        }
+
+        .compass-arrow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 4px;
+            height: 120px;
+            background: linear-gradient(to bottom, #4CAF50, #388E3C);
+            transform-origin: bottom center;
+            transform: translate(-50%, -100%);
+            border-radius: 2px;
+        }
+
+        .compass-arrow:before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -8px;
+            width: 20px;
+            height: 20px;
+            background: #4CAF50;
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+        }
+
+        .qibla-arrow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 4px;
+            height: 120px;
+            background: linear-gradient(to bottom, #FFC107, #FFA000);
+            transform-origin: bottom center;
+            transform: translate(-50%, -100%);
+            border-radius: 2px;
+            opacity: 0.7;
+        }
+
+        .qibla-arrow:before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -8px;
+            width: 20px;
+            height: 20px;
+            background: #FFC107;
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+        }
+
+        .compass-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 20px;
+            height: 20px;
+            background: #4CAF50;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .compass-info {
+            text-align: center;
+            margin: 20px 0;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .info-item {
+            margin: 10px 0;
+            font-size: 1.1rem;
+            color: #333;
+        }
+
+        .calibrate-btn {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin: 20px 0;
+            transition: all 0.3s ease;
+        }
+
+        .calibrate-btn:hover {
+            background: #388E3C;
+            transform: translateY(-2px);
+        }
+
+        .error-message {
+            color: #f44336;
+            text-align: center;
+            margin: 20px 0;
+            padding: 10px;
+            background: rgba(244, 67, 54, 0.1);
+            border-radius: 5px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <button class="toggle-sidebar"><i class="fas fa-bars"></i></button>
+    
+    <div class="sidebar">
+        <div class="sidebar-menu">
+            <a href="index.html">
+                <img src="images/app-icon.png" alt="الرئيسية">
+                <span data-translate="home">الرئيسية</span>
+            </a>
+            <a href="reciters.html">
+                <img src="images/micrfone.png" alt="القراء">
+                <span data-translate="reciters">القراء</span>
+            </a>
+            <a href="prayer-times.html">
+                <img src="images/مواقيت الصلاة.png" alt="مواقيت الصلاة">
+                <span data-translate="prayerTimes">مواقيت الصلاة</span>
+            </a>
+            <a href="qibla.html" class="active">
+                <i class="fas fa-compass"></i>
+                <span data-translate="qibla">القبلة</span>
+            </a>
+            <a href="tasbih.html">
+                <img src="images/سبحة.png" alt="السبحة الإلكترونية">
+                <span data-translate="tasbih">السبحة الإلكترونية</span>
+            </a>
+            <a href="quran.html">
+                <img src="images/المصحف الشريف.png" alt="المصحف الشريف">
+                <span data-translate="quran">المصحف الشريف</span>
+            </a>
+            <a href="azkar.html">
+                <i class="fas fa-book-open"></i>
+                <span data-translate="azkar">الأذكار</span>
+            </a>
+            <a href="settings.html">
+                <i class="fas fa-gear"></i>
+                <span data-translate="settings">الإعدادات</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="container">
+        <header>
+            <h1 class="page-title" data-translate="qiblaTitle">اتجاه القبلة</h1>
+            <p class="page-description" data-translate="qiblaDescription">تحديد اتجاه القبلة باستخدام البوصلة</p>
+        </header>
+        
+        <div class="compass-container">
+            <button class="calibrate-btn" data-translate="calibrateCompass">معايرة البوصلة</button>
+            
+            <div class="compass">
+                <div class="compass-arrow"></div>
+                <div class="qibla-arrow"></div>
+                <div class="compass-center"></div>
+            </div>
+
+            <div class="compass-info">
+                <div class="info-item">
+                    <span data-translate="northDirection">اتجاه الشمال</span>: 
+                    <span id="north-degrees">0°</span>
+                </div>
+                <div class="info-item">
+                    <span data-translate="qiblaDirection">اتجاه القبلة</span>: 
+                    <span id="qibla-degrees">0°</span>
+                </div>
+            </div>
+
+            <div class="error-message" id="location-error" data-translate="locationNotSupported">
+                عذراً، جهازك لا يدعم تحديد الموقع
+            </div>
+            <div class="error-message" id="compass-error" data-translate="compassNotSupported">
+                عذراً، جهازك لا يدعم البوصلة
+            </div>
+        </div>
+    </div>
+
+    <script src="translations.js"></script>
+    <script src="darkMode.js"></script>
+    <script src="qibla.js"></script>
+</body>
+</html>

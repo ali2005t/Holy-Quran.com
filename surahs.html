@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>قائمة السور</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#4CAF50">
+    <link rel="apple-touch-icon" href="images/app-icon.png">
+</head>
+<body>
+    <button class="toggle-sidebar" id="sidebarToggle"><i class="fas fa-bars"></i></button>
+    
+    <div class="sidebar">
+        <div class="sidebar-menu">
+            <a href="index.html">
+                <img src="images/app-icon.png" alt="الرئيسية">
+                <span data-translate="home">الرئيسية</span>
+            </a>
+            <a href="reciters.html">
+                <img src="images/micrfone.png" alt="القراء">
+                <span data-translate="reciters">القراء</span>
+            </a>
+            <a href="prayer-times.html">
+                <img src="images/مواقيت الصلاة.png" alt="مواقيت الصلاة">
+                <span data-translate="prayerTimes">مواقيت الصلاة</span>
+            </a>
+            <a href="tasbih.html">
+                <img src="images/سبحة.png" alt="السبحة الإلكترونية">
+                <span data-translate="tasbih">السبحة الإلكترونية</span>
+            </a>
+            <a href="quran.html">
+                <img src="images/المصحف الشريف.png" alt="المصحف الشريف">
+                <span data-translate="quran">المصحف الشريف</span>
+            </a>
+            <a href="azkar.html">
+                <i class="fas fa-book-open"></i>
+                <span data-translate="azkar">الأذكار</span>
+            </a>
+            <a href="settings.html">
+                <i class="fas fa-gear"></i>
+                <span data-translate="settings">الإعدادات</span>
+            </a>
+        </div>
+    </div>
+    <div class="container">
+        <header>
+            <div class="reciter-info">
+                <img id="reciter-image" src="" alt="صورة القارئ">
+                <h1 id="reciter-name"></h1>
+            </div>
+        </header>
+
+        <div class="search-box">
+            <i class="fas fa-search search-icon"></i>
+            <input type="text" id="surah-search" data-translate="searchSurah" placeholder="ابحث عن السورة...">
+        </div>
+
+        <div class="surah-list">
+            <!-- سيتم إضافة السور هنا عن طريق JavaScript -->
+        </div>
+    </div>
+
+    <div class="audio-player">
+        <div class="current-surah-info">
+            <i class="fas fa-quran"></i>
+            <span id="current-surah-name">اختر سورة للاستماع</span>
+        </div>
+        <div class="player-controls">
+            <button id="prev-surah"><i class="fas fa-step-backward"></i></button>
+            <button id="play-pause"><i class="fas fa-play"></i></button>
+            <button id="next-surah"><i class="fas fa-step-forward"></i></button>
+        </div>
+        <div class="player-wrapper">
+            <audio id="quran-player" controls>
+                <source src="" type="audio/mp3">
+                متصفحك لا يدعم تشغيل الصوت
+            </audio>
+        </div>
+    </div>
+
+    <script src="translations.js"></script>
+    <script src="darkMode.js"></script>
+    <script src="surahs.js"></script>
+</body>
+</html>
